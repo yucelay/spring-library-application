@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+<head>
+<meta charset="UTF-8">
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-5"
+				style="border-radius: 10px; overflow: hidden; border: 0px Solid gray;">
+				<br> <br> <img src="publisher.png" style="opacity: 0.2" width="100%">
+			</div>
+			<div class="col-sm-7">
+
+
+				<h1>Yayınevi Ekle</h1>
+				<div id="errors" class="alert alert-danger"
+					th:if="${(param.error != null) and (param.error[0] == 'true')}">
+					Lütfen Zorunlu Alanları Doldurunuz.</div>
+
+				<form action="#" th:action="@{/savePublisher}"
+					th:object="${publisher}" method="POST">
+					<div class="form-group">
+						<label for="exampleInputEmail1">Yayınevi Adı(*)</label> <input
+							type="text" class="form-control" th:field="*{publisherName}" required>
+					</div>
+
+					<div class="form-group">
+						<label for="exampleInputEmail1">Açıklama</label>
+
+						<textarea class="form-control" id="exampleFormControlTextarea1"
+							rows="4" th:field="*{publisherExplanation}"></textarea>
+					</div>
+					<label for="exampleInputEmail1"> (*) Zorunlu Alanlar</label><br>
+					<button type="submit" class="btn btn-primary">Kaydet</button>
+
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<div style="width: 100%; height: 80px;"></div>
+	<div th:replace="fragments/footer :: footer" />
+
+
+</body>
+</html>

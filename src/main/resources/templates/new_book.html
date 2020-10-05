@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+	<div class="container">
+
+		<div class="row">
+			<div class="col-sm-4"
+				style="border-radius: 10px; overflow: hidden; border: 0px Solid gray;">
+				<img src="book.jpg" style="opacity: 0.2" width="80%">
+			</div>
+			<div class="col-sm-8">
+
+				<h1>Kitap Ekle</h1>
+
+				<div id="errors" class="alert alert-danger"
+					th:if="${(param.error != null) and (param.error[0] == 'true')}">
+					Lütfen Zorunlu Alanları Doldurunuz.</div>
+
+				<form action="#" th:action="@{/saveBook}" th:object="${book}"
+					method="POST">
+					<div class="form-group row">
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Kitap Adı(*)</label> <input
+								type="text" class="form-control" th:field="*{bookName}" required>
+						</div>
+
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Kitap Alt Adı</label> <input
+								type="text" class="form-control" th:field="*{bookSubname}">
+						</div>
+
+
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Seri Numarası</label> <input
+								type="text" class="form-control" th:field="*{bookSerial}">
+						</div>
+					</div>
+
+
+
+					<div class="form-group row">
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Yazar(*)</label> <select
+								class="form-control" id="bookAuthor" name="bookAuthor"
+								style="width: 200px" required>
+								<option th:object="${book}" th:value="*{bookAuthor}"
+									th:text="*{bookAuthor}"></option>
+								<option th:object="${authors}" th:each="author : ${authors}"
+									th:value="${author.authorName}" th:text="${author.authorName}"></option>
+							</select>
+						</div>
+
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Yayınevi(*)</label> <select
+								class="form-control" id="bookPublisherName"
+								name="bookPublisherName" style="width: 200px" required>
+								<option th:object="${book}" th:value="*{bookPublisherName}"
+									th:text="*{bookPublisherName}"></option>
+								<option th:object="${publishers}"
+									th:each="publisher : ${publishers}"
+									th:value="${publisher.publisherName}"
+									th:text="${publisher.publisherName}"></option>
+							</select>
+						</div>
+						<div class="form-group" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">ISBN(*)</label> <input
+								type="text" class="form-control" th:field="*{bookIsbn}"
+								style="width: 200px" required>
+						</div>
+
+					</div>
+
+					<div class="form-group row">
+						<div class="form-group w-75" style="margin-left: 30px;">
+							<label for="exampleInputEmail1">Açıklama</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1"
+								rows="4" th:field="*{bookExplanation}"></textarea>
+						</div>
+					</div>
+					<label for="exampleInputEmail1"> (*) Zorunlu Alanlar</label><br>
+					<button type="submit" class="btn btn-primary">Kaydet</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+	<div style="width: 100%; height: 80px;"></div>
+	<div th:replace="fragments/footer :: footer" />
+</body>
+</html>

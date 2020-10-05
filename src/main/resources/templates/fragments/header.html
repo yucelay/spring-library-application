@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="tr">
+<head>
+
+
+<div th:fragment="header-css">
+	<!-- this is header-css -->
+
+	<script language="javascript" src="../gotoTop.js"></script>
+
+
+	<style type="text/css">
+#buttonDesign {
+	background-color: lightGray;
+	border-radius: 10px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-left: 4px;
+}
+</style>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<!-- 	<link href="bootstrap/dist/css/bootstrap.min.css"
+		th:href="@{bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet" />
+		 -->
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+		crossorigin="anonymous">
+	<link rel="stylesheet"
+		href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+		crossorigin="anonymous" />
+</div>
+
+
+</head>
+<body>
+	<div th:fragment="header" style="margin-bottom: 20px;">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="/"
+				style="padding-right: 10px; color: #17A1B7;"><h2>Kütüphane
+					Uygulaması</h2></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item" id="buttonDesign"><a class="nav-link"
+						href="/"><i class="fas fa-chart-bar"></i> İstatistik</a></li>
+
+					<li class="nav-item" id="buttonDesign"><a class="nav-link"
+						href="/bookList"><i class="fal fa-book"></i> Kitaplar</a></li>
+
+					<li class="nav-item" id="buttonDesign"><a class="nav-link"
+						href="/authorList"><i class="fas fa-user-edit"></i> Yazarlar</a></li>
+
+					<li class="nav-item" id="buttonDesign"><a class="nav-link"
+						href="/publisherList"><i class="fas fa-print"></i> Yayınevleri</a></li>
+
+					<li class="nav-item dropdown" id="buttonDesign"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> <i class="fas fa-plus-circle"></i> Yeni
+							Ekle</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown"
+							style="background-color: lightgray; border-radius: 10px;">
+							<a class="dropdown-item" th:href="@{/showNewAuthorForm}"> <i
+								class="fas fa-user-edit"></i> Yazar Ekle
+							</a> <a class="dropdown-item" th:href="@{/showNewPublisherForm}">
+								<i class="fas fa-print" style="padding-right: 2px;"></i>
+								Yayınevi Ekle
+							</a> <a class="dropdown-item" th:href="@{/showNewBookForm}"><i
+								class="fal fa-book"
+								style="padding-right: 4px; padding-left: 2px;"></i> Kitap Ekle</a>
+						</div></li>
+
+
+				</ul>
+
+
+				<form class="form-inline my-2 my-lg-0"
+					th:action="@{/showSearchResult}" method="POST">
+					<input class="form-control mr-sm-4" name="searchWord"
+						id="searchWord" th:value="*{searchWord}" type="text"
+						placeholder="Kitap Adı, ISBN, Seri, Yazar..." aria-label="Search"
+						size="23px" required>
+					<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Ara</button>
+				</form>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

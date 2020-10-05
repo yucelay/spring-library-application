@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+<div class="container">
+	<div>
+		<a th:href="@{/showNewPublisherForm}"><div class="btn btn-info"><i class="fas fa-plus-circle"></i>  Yayınevi Ekle</div></a>
+
+		<h1>Yayınevleri</h1>
+		<table class="table table-striped table-responsive">
+			<thead>
+				<tr>
+					<th width="30%">Yayınevi Adi</th>
+					<th width="50%">Açıklama</th>
+					<th width="20%">İşlemler</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="publisher : ${listPublisher}">
+					<td th:text="${publisher.publisherName}"></td>
+					<td th:text="${publisher.publisherExplanation}"></td>
+					<td><a
+						th:href="@{/showPublisherFormForUpdate/{id}(id=${publisher.id})}" class="btn btn-info"><i class="fas fa-edit"></i> Düzenle</a>
+						<a th:href="@{/deletePublisher/{id}(id=${publisher.id})}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Sil</a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
+</div>
+	<div style="width:100%; height:80px;"></div>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

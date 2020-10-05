@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<div th:replace="fragments/header :: header-css" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header" />
+	<div class="container">
+		<span th:switch="${foundedBooksSize}"> <span th:case="'0'">
+				<br>
+				<center>
+					<h2>
+						<div class="alert alert-danger">
+							<i class="fas fa-exclamation-triangle"></i> <b>
+								"[[${searchWord}]]"</b> İle İlgili Sonuç Bulunamadı!
+						</div>
+					</h2>
+				</center>
+		</span> <span th:case="*">
+				<h3>
+					<b>"[[${searchWord}]]"</b> İle İlgili Sonuçlar.
+				</h3>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Kitap Adı</th>
+							<th>Kitap Alt Adı</th>
+							<th>Kitap Seri No</th>
+							<th>Yazar</th>
+							<th>Yayınevi Adı</th>
+							<th>ISBN</th>
+							<th>Açıklama</th>
+							<th>İşlemler</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="book : ${foundedBooks}">
+							<td th:text="${book.bookName}"></td>
+							<td th:text="${book.bookSubname}"></td>
+							<td th:text="${book.bookSerial}"></td>
+							<td th:text="${book.bookAuthor}"></td>
+							<td th:text="${book.bookPublisherName}"></td>
+							<td th:text="${book.bookIsbn}"></td>
+							<td th:text="${book.bookExplanation}"></td>
+							<td><a
+								th:href="@{/showBookFormForUpdate/{id}(id=${book.id})}"
+								class="btn btn-info"> <i class="fas fa-edit"></i> Düzenle
+							</a> <a th:href="@{/deleteBook/{id}(id=${book.id})}"
+								class="btn btn-danger"><i class="fas fa-trash-alt"></i> Sil</a></td>
+						</tr>
+					</tbody>
+
+				</table>
+		</span>
+		</span>
+
+	</div>
+	<div style="width: 100%; height: 100px;"></div>
+	<div th:replace="fragments/footer :: footer" />
+</body>
+</html>
