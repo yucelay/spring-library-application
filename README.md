@@ -35,5 +35,5 @@ springmvc-springboot-hibernate-jpa-maven
 * Yukarıdaki kurulumlar tamamlandıktan sonra kurulmuş olan IDE (STS, Eclipse vb.) açılarak **spring-library-application** projesi import edilir.
 * Veritabanına erişim için **application.properties** dosyasına, veritabanı sunucusu için belirlediğiniz port numarası, kullanıcı adı ve şifre bilgileri girilmelidir.
 * Proje Spring Boot projesi olduğu için çalıştırken IDE ortamında **Project Explorer** kısmından **spring-library-application** projesi üzerinde sağ tıklanarak sırasıyla **Run As >> Spring Boot App** tıklanarak veya **com.yucel.library** paketinin içindeki **SpringLibraryApplication.java** dosyasına sağ tıklanarak sırasıyla **Run As >> Spring Boot App** tıklanarak proje çalıştırılır.
-* Proje çalıştırıldıktan sonra herhangi bir web tarayıcısı açılarak **[http://localhost:8081](http://localhost:8081)** adresine gidilir.(Not: adresin sonundaki 8081 port numarasıdır. Port çakışması durumunda **application.properties** dosyasından **server.port=8081** kısmı değiştirilmelidir.) 
+* Proje çalıştırıldıktan sonra herhangi bir web tarayıcısı açılarak **http://localhost:8081** adresine gidilir.(Not: adresin sonundaki 8081 port numarasıdır. Port çakışması durumunda **application.properties** dosyasından **server.port=8081** kısmı değiştirilmelidir.) 
 
